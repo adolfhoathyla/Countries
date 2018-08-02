@@ -7,7 +7,17 @@
 //
 
 import UIKit
+import EVReflection
 
-class Country: NSObject {
-
+class Country: EVObject {
+    var name: String?
+    var capital: String?
+    var region: String?
+    var subRegions: String?
+    var flag: String?
+    var population: NSNumber?
+    var area: NSNumber?
+    var callingCodes = [String]()
+    var languages = [Language]()
+    var currencies = [Currency]()
 }

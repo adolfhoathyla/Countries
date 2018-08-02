@@ -7,7 +7,10 @@
 //
 
 import UIKit
+import EVReflection
 
-class Currency: NSObject {
-
+class Currency: EVObject {
+    var code: String?
+    var name: String?
+    var symbol: String?
 }
