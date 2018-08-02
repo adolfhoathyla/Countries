@@ -13,7 +13,7 @@ class Country: EVObject {
     var name: String?
     var capital: String?
     var region: String?
-    var subRegions: String?
+    var subregion: String?
     var flag: String?
     var population: NSNumber?
     var area: NSNumber?

@@ -10,14 +10,16 @@ import UIKit
 
 class CountriesTableViewController: UITableViewController {
 
+    var countries = [Country]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        CountriesAPIHelper.loadAllCountries { (countries, success) in
+            guard let countries = countries else { return }
+            self.countries = countries
+            self.tableView.reloadData()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,14 +34,17 @@ class CountriesTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 7
+        return countries.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "COUNTRY_CELL_IDENTIFIER", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "COUNTRY_CELL_IDENTIFIER", for: indexPath) as? CountryTableViewCell
 
-        return cell
+        cell?.name.text = countries[indexPath.row].name ?? "<country name>"
+        cell?.region.text = (countries[indexPath.row].region ?? "<region name>") + ", " + (countries[indexPath.row].subregion ?? "<subregion name>")
+        
+        return cell!
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

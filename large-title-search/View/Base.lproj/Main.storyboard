@@ -20,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.32549019607843138" green="0.46666666666666667" blue="0.47843137254901957" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="COUNTRY_CELL_IDENTIFIER" rowHeight="85" id="WbT-zc-e17">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="COUNTRY_CELL_IDENTIFIER" rowHeight="85" id="WbT-zc-e17" customClass="CountryTableViewCell" customModule="large_title_search" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="85"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WbT-zc-e17" id="cI4-tz-cfi">
@@ -70,6 +70,11 @@
                                         <constraint firstItem="8ok-4X-KjK" firstAttribute="trailing" secondItem="cI4-tz-cfi" secondAttribute="trailingMargin" id="bsg-5R-Pps"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="flag" destination="VxD-fD-mt5" id="mkF-in-2jb"/>
+                                    <outlet property="name" destination="8ok-4X-KjK" id="ljS-Sf-X8V"/>
+                                    <outlet property="region" destination="lDD-4S-WfA" id="6g4-vm-tCJ"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

@@ -17,6 +17,7 @@
 		DC3360D121133301001ECE7C /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3360D021133301001ECE7C /* Currency.swift */; };
 		DC3360D321133351001ECE7C /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3360D221133351001ECE7C /* Language.swift */; };
 		DC3360D62113386B001ECE7C /* CountriesAPIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3360D52113386B001ECE7C /* CountriesAPIHelper.swift */; };
+		DC3360D921136FE3001ECE7C /* CountryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3360D821136FE3001ECE7C /* CountryTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		DC3360D021133301001ECE7C /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		DC3360D221133351001ECE7C /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		DC3360D52113386B001ECE7C /* CountriesAPIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesAPIHelper.swift; sourceTree = "<group>"; };
+		DC3360D821136FE3001ECE7C /* CountryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 		DC3360CD2112450D001ECE7C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				DC3360D721136F9C001ECE7C /* Cells */,
 				DC3360CE2112536B001ECE7C /* CountriesTableViewController.swift */,
 			);
 			path = Controller;
@@ -130,6 +133,14 @@
 				DC3360D52113386B001ECE7C /* CountriesAPIHelper.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		DC3360D721136F9C001ECE7C /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				DC3360D821136FE3001ECE7C /* CountryTableViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,6 +264,7 @@
 				DC3360D321133351001ECE7C /* Language.swift in Sources */,
 				DC3360CB21122E09001ECE7C /* Country.swift in Sources */,
 				DC3360CF2112536B001ECE7C /* CountriesTableViewController.swift in Sources */,
+				DC3360D921136FE3001ECE7C /* CountryTableViewCell.swift in Sources */,
 				DC3360B821121584001ECE7C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
