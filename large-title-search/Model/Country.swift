@@ -20,4 +20,6 @@ class Country: EVObject {
     var callingCodes = [String]()
     var languages = [Language]()
     var currencies = [Currency]()
+    
+    var flagImage: UIImage?
 }

@@ -7,24 +7,56 @@
 //
 
 import UIKit
+import SDWebImage
 
 class CountriesTableViewController: UITableViewController {
 
     var countries = [Country]()
+    var filteredCountries = [Country]()
+    
+    var search = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.tableFooterView = UIView()
 
         CountriesAPIHelper.loadAllCountries { (countries, success) in
             guard let countries = countries else { return }
             self.countries = countries
             self.tableView.reloadData()
         }
+        
+        addSearchBar()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    //MARK: - Search bar
+    fileprivate func addSearchBar() {
+        search.searchResultsUpdater = self
+        search.searchBar.placeholder = "Search countries..."
+        search.searchBar.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)]
+        self.navigationItem.searchController = search
+    }
+    
+    fileprivate func searchBarIsEmpty() -> Bool {
+        return search.searchBar.text?.isEmpty ?? true
+    }
+    
+    fileprivate func filterContentForSearchText(searchText: String) {
+        filteredCountries = countries.filter({ (country) -> Bool in
+            return country.name!.lowercased().contains(searchText.lowercased())
+        })
+        self.tableView.reloadData()
+    }
+    
+    fileprivate func isFiltering() -> Bool {
+        return search.isActive && !searchBarIsEmpty()
     }
 
     // MARK: - Table view data source
@@ -34,57 +66,30 @@ class CountriesTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return countries.count
+        return isFiltering() ? filteredCountries.count : countries.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "COUNTRY_CELL_IDENTIFIER", for: indexPath) as? CountryTableViewCell
 
-        cell?.name.text = countries[indexPath.row].name ?? "<country name>"
-        cell?.region.text = (countries[indexPath.row].region ?? "<region name>") + ", " + (countries[indexPath.row].subregion ?? "<subregion name>")
+        let country = isFiltering() ? filteredCountries[indexPath.row] : countries[indexPath.row]
         
+        cell?.name.text = country.name ?? "<country name>"
+        cell?.region.text = (country.region ?? "<region name>") + ", " + (country.subregion ?? "<subregion name>")
+        if let uri = country.flag {
+            cell?.flag.sd_setImage(with: URL(string: uri), completed: { (image, error, type, url) in
+                print(error)
+                print(url)
+            })
+        }
+
         return cell!
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 85.0
     }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 
     /*
     // MARK: - Navigation
@@ -96,4 +101,15 @@ class CountriesTableViewController: UITableViewController {
     }
     */
 
+}
+
+
+
+
+
+
+extension CountriesTableViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchText: searchController.searchBar.text!)
+    }
 }
