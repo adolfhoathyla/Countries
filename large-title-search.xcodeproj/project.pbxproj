@@ -18,6 +18,7 @@
 		DC3360D321133351001ECE7C /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3360D221133351001ECE7C /* Language.swift */; };
 		DC3360D62113386B001ECE7C /* CountriesAPIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3360D52113386B001ECE7C /* CountriesAPIHelper.swift */; };
 		DC3360D921136FE3001ECE7C /* CountryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3360D821136FE3001ECE7C /* CountryTableViewCell.swift */; };
+		DC3360DB2114FE98001ECE7C /* CountryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3360DA2114FE98001ECE7C /* CountryDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		DC3360D221133351001ECE7C /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		DC3360D52113386B001ECE7C /* CountriesAPIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesAPIHelper.swift; sourceTree = "<group>"; };
 		DC3360D821136FE3001ECE7C /* CountryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryTableViewCell.swift; sourceTree = "<group>"; };
+		DC3360DA2114FE98001ECE7C /* CountryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 			children = (
 				DC3360D721136F9C001ECE7C /* Cells */,
 				DC3360CE2112536B001ECE7C /* CountriesTableViewController.swift */,
+				DC3360DA2114FE98001ECE7C /* CountryDetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -222,14 +225,12 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireJsonToObjects/AlamofireJsonToObjects.framework",
 				"${BUILT_PRODUCTS_DIR}/EVReflection/EVReflection.framework",
-				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireJsonToObjects.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EVReflection.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -267,6 +268,7 @@
 				DC3360CB21122E09001ECE7C /* Country.swift in Sources */,
 				DC3360CF2112536B001ECE7C /* CountriesTableViewController.swift in Sources */,
 				DC3360D921136FE3001ECE7C /* CountryTableViewCell.swift in Sources */,
+				DC3360DB2114FE98001ECE7C /* CountryDetailViewController.swift in Sources */,
 				DC3360B821121584001ECE7C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

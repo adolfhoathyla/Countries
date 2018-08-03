@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SDWebImage
 
 class CountriesTableViewController: UITableViewController {
 
@@ -77,12 +76,6 @@ class CountriesTableViewController: UITableViewController {
         
         cell?.name.text = country.name ?? "<country name>"
         cell?.region.text = (country.region ?? "<region name>") + ", " + (country.subregion ?? "<subregion name>")
-        if let uri = country.flag {
-            cell?.flag.sd_setImage(with: URL(string: uri), completed: { (image, error, type, url) in
-                print(error)
-                print(url)
-            })
-        }
 
         return cell!
     }
@@ -90,16 +83,27 @@ class CountriesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 85.0
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "GO_TO_COUNTRY_DETAIL", sender: indexPath)
+    }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        guard let identifier = segue.identifier else { return }
+        switch identifier {
+        case "GO_TO_COUNTRY_DETAIL":
+            guard let indexPath = sender as? IndexPath else { return }
+            let countryVC = segue.destination as? CountryDetailViewController
+            countryVC?.country = isFiltering() ? filteredCountries[indexPath.row] : countries[indexPath.row]
+        default:
+            break
+        }
     }
-    */
+    
 
 }
 
@@ -107,7 +111,7 @@ class CountriesTableViewController: UITableViewController {
 
 
 
-
+//MARK: - search rsults updating
 extension CountriesTableViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         filterContentForSearchText(searchText: searchController.searchBar.text!)
