@@ -20,6 +20,12 @@ class CountryDetailViewController: UIViewController {
         super.viewDidLoad()
 
         adjustFlagHeight()
+        
+        CountriesAPIHelper.downloadFlag(country: country) { (flag, success) in
+            if success {
+                self.flag.image = flag
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {

@@ -41,4 +41,28 @@ class CountriesAPIHelper: NSObject {
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
         })
     }
+    
+    
+    //MARK: - Flag
+    static func downloadFlag(country: Country, completionHandler: @escaping ((_ flag: UIImage?, _ success: Bool) -> ())) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        CountriesAPIHelper.configAlamofire()
+        CountriesAPIHelper.alamofireManager?.request(country.flag!, method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil).responseData(completionHandler: { (response: DataResponse<Data>) in
+            guard let flagResponse = response.response else { return }
+            switch flagResponse.statusCode {
+            case 200:
+                if let flagData = response.result.value {
+                    print(flagData)
+                    /*
+                    if let flag = SVGKImage(data: flagData) {
+                        completionHandler(flag.uiImage, true)
+                    }
+                    */
+                }
+            default:
+                completionHandler(nil, false)
+            }
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        })
+    }
 }
