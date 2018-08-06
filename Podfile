@@ -8,5 +8,6 @@ target 'large-title-search' do
   # Pods for large-title-search
   pod 'AlamofireJsonToObjects'
   pod 'EVReflection'
+  pod 'SVGKit', :git => 'https://github.com/SVGKit/SVGKit.git', :branch => '2.x'
 
 end

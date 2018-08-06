@@ -10,6 +10,7 @@ import UIKit
 import EVReflection
 import Alamofire
 import AlamofireJsonToObjects
+import SVGKit
 
 class CountriesAPIHelper: NSObject {
     static let uri = "https://restcountries.eu/rest/v2"
@@ -53,11 +54,9 @@ class CountriesAPIHelper: NSObject {
             case 200:
                 if let flagData = response.result.value {
                     print(flagData)
-                    /*
                     if let flag = SVGKImage(data: flagData) {
                         completionHandler(flag.uiImage, true)
                     }
-                    */
                 }
             default:
                 completionHandler(nil, false)
