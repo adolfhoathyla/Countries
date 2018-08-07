@@ -53,7 +53,6 @@ class CountriesAPIHelper: NSObject {
             switch flagResponse.statusCode {
             case 200:
                 if let flagData = response.result.value {
-                    print(flagData)
                     if let flag = SVGKImage(data: flagData) {
                         completionHandler(flag.uiImage, true)
                     }

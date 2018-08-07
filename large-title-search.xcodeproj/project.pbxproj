@@ -19,6 +19,7 @@
 		DC3360D62113386B001ECE7C /* CountriesAPIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3360D52113386B001ECE7C /* CountriesAPIHelper.swift */; };
 		DC3360D921136FE3001ECE7C /* CountryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3360D821136FE3001ECE7C /* CountryTableViewCell.swift */; };
 		DC3360DB2114FE98001ECE7C /* CountryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3360DA2114FE98001ECE7C /* CountryDetailViewController.swift */; };
+		DCF962382119DED400180F8A /* CountryGenericInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF962372119DED400180F8A /* CountryGenericInfoTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		DC3360D52113386B001ECE7C /* CountriesAPIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesAPIHelper.swift; sourceTree = "<group>"; };
 		DC3360D821136FE3001ECE7C /* CountryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryTableViewCell.swift; sourceTree = "<group>"; };
 		DC3360DA2114FE98001ECE7C /* CountryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDetailViewController.swift; sourceTree = "<group>"; };
+		DCF962372119DED400180F8A /* CountryGenericInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryGenericInfoTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				DC3360D821136FE3001ECE7C /* CountryTableViewCell.swift */,
+				DCF962372119DED400180F8A /* CountryGenericInfoTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 				DC3360D121133301001ECE7C /* Currency.swift in Sources */,
 				DC3360D62113386B001ECE7C /* CountriesAPIHelper.swift in Sources */,
 				DC3360D321133351001ECE7C /* Language.swift in Sources */,
+				DCF962382119DED400180F8A /* CountryGenericInfoTableViewCell.swift in Sources */,
 				DC3360CB21122E09001ECE7C /* Country.swift in Sources */,
 				DC3360CF2112536B001ECE7C /* CountriesTableViewController.swift in Sources */,
 				DC3360D921136FE3001ECE7C /* CountryTableViewCell.swift in Sources */,

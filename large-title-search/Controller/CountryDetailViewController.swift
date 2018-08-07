@@ -16,14 +16,19 @@ class CountryDetailViewController: UIViewController {
     
     var country = Country()
     
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         adjustFlagHeight()
         
+        self.title = country.name
+        
         CountriesAPIHelper.downloadFlag(country: country) { (flag, success) in
             if success {
                 self.flag.image = flag
+                self.indicator.stopAnimating()
             }
         }
     }
@@ -49,4 +54,48 @@ class CountryDetailViewController: UIViewController {
     }
     */
 
+}
+
+
+
+
+extension CountryDetailViewController: UITableViewDelegate, UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 4
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 0:
+            return "capital"
+        case 1:
+            return "region"
+        case 2:
+            return "population"
+        case 3:
+            return "area"
+        default:
+            return ""
+        }
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "GENERIC_INFO_IDENTIFIER", for: indexPath) as? CountryGenericInfoTableViewCell
+        
+        switch indexPath.section {
+        case 0:
+            cell?.info.text = country.capital
+        case 1:
+            cell?.info.text = (((country.region ?? "") + ", " + (country.subregion ?? "") == ", ") ? "<no info>" : country.region! + ", " + country.subregion!)
+        case 2:
+            cell?.info.text = "\(country.population?.intValue ?? 0) hab."
+        case 3:
+            cell?.info.text = "\(country.area?.intValue ?? 0) km²"
+        default:
+            break
+        }
+        
+        return cell!
+    }
 }
